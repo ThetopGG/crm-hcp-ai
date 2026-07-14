@@ -50,70 +50,12 @@ An AI-first CRM module that lets pharma field reps log doctor interactions in **
 **Database:** PostgreSQL.
 
 
-## 2. Folder Structure
-
-
-crm-hcp-ai/
-├── frontend/
-│   ├── index.html
-│   ├── package.json
-│   ├── vite.config.js
-│   ├── .env.example
-│   └── src/
-│       ├── main.jsx
-│       ├── App.jsx
-│       ├── theme.js
-│       ├── index.css
-│       ├── api/
-│       │   └── axios.js
-│       ├── store/
-│       │   ├── store.js
-│       │   └── slices/ (authSlice, chatSlice, interactionSlice, hcpSlice, uiSlice)
-│       ├── pages/
-│       │   ├── Login.jsx
-│       │   ├── Dashboard.jsx
-│       │   ├── HCPList.jsx
-│       │   ├── InteractionHistory.jsx
-│       │   ├── LogInteraction.jsx
-│       │   └── Settings.jsx
-│       └── components/
-│           ├── Layout/ (Navbar, Sidebar, MainLayout, ProtectedRoute)
-│           ├── Dashboard/StatCard.jsx
-│           └── LogInteraction/ (StructuredForm.jsx, AIChatPanel.jsx)
-│
-├── backend/
-│   ├── requirements.txt
-│   ├── .env.example
-│   └── app/
-│       ├── main.py
-│       ├── config.py
-│       ├── database.py
-│       ├── models/ (user, hcp, product, interaction, followup)
-│       ├── schemas/ (auth, hcp, interaction, followup, chat)
-│       ├── crud/ (user, hcp, interaction)
-│       ├── services/ (auth_service, llm_service, dashboard_service)
-│       ├── core/ (security.py, deps.py)
-│       ├── routers/ (auth, hcp, interaction, search, dashboard, chat)
-│       └── langgraph_agent/
-│           ├── state.py
-│           ├── nodes.py
-│           ├── graph.py
-│           └── tools/
-│               ├── log_interaction_tool.py
-│               ├── edit_interaction_tool.py
-│               ├── search_interaction_tool.py
-│               ├── followup_tool.py
-│               └── insights_tool.py
-│
-├── docs/
-│   └── video_demo_script.md
-├── .env.example
-└── README.md
 
 
 
 
-# 3. LangGraph Agent Explained
+
+#  LangGraph Agent Explained
 
 The agent implements exactly the flow required by the assignment:
 
@@ -141,7 +83,7 @@ Every node/tool calls `app.services.llm_service.get_llm()`, which reads `setting
 
 ---
 
-## 4. Database Schema
+# Database Schema
 
 | Table          | Key Fields                                                                 |
 |----------------|-----------------------------------------------------------------------------|
@@ -155,16 +97,16 @@ Tables are auto-created on backend startup via `Base.metadata.create_all()`. For
 
 ---
 
-## 5. Setup & Installation
+# Setup & Installation
 
-### Prerequisites
+# Prerequisites
 
 - Python 3.11+ (Tested on Python 3.13)
 - Node.js 18+
 - PostgreSQL 14+
 - A free Groq API key: https://console.groq.com/keys
 
-### 5.1 PostgreSQL Setup
+#  PostgreSQL Setup
 
 ```bash
 # Using psql
@@ -175,7 +117,7 @@ psql -U postgres
 CREATE DATABASE crm_hcp_ai;
 ```
 
-### 5.2 Backend Setup
+# Backend Setup
 
 ```bash
 cd backend
@@ -216,7 +158,7 @@ npm run dev
 
 Frontend now running at `http://localhost:5173`.
 
-### 5.5 First Run
+##  First Run
 
 1. Open `http://localhost:5173`.
 2. Click **Register**, create an account.
@@ -227,7 +169,7 @@ Frontend now running at `http://localhost:5173`.
 
 ---
 
-## 6. Environment Variables Reference
+# Environment Variables Reference
 
 | Variable                     | Location          | Description                                      |
 |-------------------------------|--------------------|---------------------------------------------------|
@@ -242,7 +184,7 @@ Frontend now running at `http://localhost:5173`.
 
 ---
 
-## 7. API Endpoints Summary
+# API Endpoints Summary
 
 | Method | Endpoint                       | Description                        |
 |--------|---------------------------------|-------------------------------------|
@@ -260,36 +202,16 @@ Frontend now running at `http://localhost:5173`.
 
 ---
 
-## 8. Running Both Servers Together
+#  Running Both Servers Together
 
 Open two terminals:
 
-```bash
 # Terminal 1
 cd backend && uvicorn app.main:app --reload --port 8000
 
 # Terminal 2
 cd frontend && npm run dev
-```
 
----
-
-## 9. Screenshots
-
-> Replace these placeholders with real screenshots after running the app locally.
-
-- `docs/screenshots/login.png`
-- `docs/screenshots/dashboard.png`
-- `docs/screenshots/log-interaction.png`
-- `docs/screenshots/interaction-history.png`
-
----
-
-## 10. Video Demo
-
-See [`docs/video_demo_script.md`](docs/video_demo_script.md) for a full 10–15 minute walkthrough script.
-
----
 
 ## 11. Notes on Code Quality
 
